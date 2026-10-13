@@ -19,6 +19,7 @@ nav:
   - Home: index.md
   - Plugins:
       - Safe Pocket: plugins/safepocket.md
+      - WarMode: plugins/warmode.md
 
 markdown_extensions:
   - admonition
