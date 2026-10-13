@@ -1,0 +1,1887 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for Rust Oxide/Carbon plugins by mr01sam">
+      
+      
+      
+        <link rel="canonical" href="https://docs.example.com/plugins/warmode/">
+      
+      
+        <link rel="prev" href="../safepocket/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>WarMode - mr01sam Rust Plugins</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#warmode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="mr01sam Rust Plugins" class="md-header__button md-logo" aria-label="mr01sam Rust Plugins" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            mr01sam Rust Plugins
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WarMode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="mr01sam Rust Plugins" class="md-nav__button md-logo" aria-label="mr01sam Rust Plugins" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    mr01sam Rust Plugins
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safepocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Safe Pocket
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarMode
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarMode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#player-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-commands-require-warmodeadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admin commands (require warmode.admin)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flagging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flagging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teams
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zonemanager-appears-when-zonemanager-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ZoneManager (appears when ZoneManager is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raidable-bases-appears-when-raidable-bases-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raidable Bases (appears when Raidable Bases is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#betterchat-appears-when-betterchat-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BetterChat (appears when BetterChat is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplestatus-appears-when-simplestatus-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SimpleStatus (appears when SimpleStatus is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noescape-appears-when-noescape-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NoEscape (appears when NoEscape is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toastify-appears-when-toastify-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toastify (appears when Toastify is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-plugin-forced-modes-each-section-appears-when-the-respective-plugin-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event plugin forced modes (each section appears when the respective plugin is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developer API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hooks-callable-by-other-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hooks (callable by other plugins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods-callable-on-the-warmode-plugin-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods (callable on the WarMode plugin reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#player-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-commands-require-warmodeadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admin commands (require warmode.admin)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flagging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flagging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teams
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zonemanager-appears-when-zonemanager-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ZoneManager (appears when ZoneManager is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raidable-bases-appears-when-raidable-bases-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raidable Bases (appears when Raidable Bases is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#betterchat-appears-when-betterchat-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BetterChat (appears when BetterChat is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplestatus-appears-when-simplestatus-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SimpleStatus (appears when SimpleStatus is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noescape-appears-when-noescape-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NoEscape (appears when NoEscape is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toastify-appears-when-toastify-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toastify (appears when Toastify is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-plugin-forced-modes-each-section-appears-when-the-respective-plugin-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event plugin forced modes (each section appears when the respective plugin is installed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developer API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hooks-callable-by-other-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hooks (callable by other plugins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods-callable-on-the-warmode-plugin-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods (callable on the WarMode plugin reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="warmode">WarMode<a class="headerlink" href="#warmode" title="Permanent link">&para;</a></h1>
+<p>Flag players as PVP or PVE. Controls what players can attack, loot, target, and mount based on their current mode. Ships with PVP, PVE, and NPC modes out of the box; fully custom modes can be added via the config or the Admin Panel extension.</p>
+<h2 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>warmode.admin</code></td>
+<td>Access to all admin commands (<code>warmode.setplayer</code>, <code>warmode.setall</code>, etc.).</td>
+</tr>
+</tbody>
+</table>
+<p>Modes are backed by Oxide permission <strong>groups</strong>, not individual permissions. The group name for each mode is set in the config under <code>Group</code> (e.g. <code>warmodepvp</code>, <code>warmodepve</code>). Players in a mode's group will be assigned that mode on next login/mode resolution. When a player qualifies for multiple mode groups, the one with the lowest <code>Priority</code> value wins.</p>
+<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
+<h3 id="player-commands">Player commands<a class="headerlink" href="#player-commands" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/&lt;flag command&gt;</code></td>
+<td><code>/flag</code></td>
+<td>Toggle between available modes (cycles through <code>Mode Options</code> in config), or specify a mode name directly, e.g. <code>/flag pvp</code>. Configurable via <code>Chat Command</code> in the Flagging section.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="admin-commands-require-warmodeadmin">Admin commands (require <code>warmode.admin</code>)<a class="headerlink" href="#admin-commands-require-warmodeadmin" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/warmode</code></td>
+<td>—</td>
+<td>Prints a list of all available admin commands.</td>
+</tr>
+<tr>
+<td><code>/warmode.setplayer</code></td>
+<td><code>&lt;player&gt; &lt;mode&gt;</code></td>
+<td>Sets the mode for the specified player by name or Steam ID.</td>
+</tr>
+<tr>
+<td><code>/warmode.setall</code></td>
+<td><code>&lt;mode&gt;</code></td>
+<td>Sets the mode for every player currently on the server.</td>
+</tr>
+<tr>
+<td><code>/warmode.mode</code></td>
+<td><code>[player]</code></td>
+<td>Displays the current mode for the given player, or your own if omitted.</td>
+</tr>
+<tr>
+<td><code>/warmode.tc</code></td>
+<td>—</td>
+<td>Displays the mode of the base (Tool Cupboard) you are currently standing in.</td>
+</tr>
+<tr>
+<td><code>/warmode.getmode</code></td>
+<td>—</td>
+<td>Displays the mode of the entity or player you are looking at.</td>
+</tr>
+<tr>
+<td><code>/warmode.debugmode</code></td>
+<td><code>[id] [mode\|clear]</code></td>
+<td>Assign a fake mode to any player ID for testing. Omit all args to clear all debug overrides.</td>
+</tr>
+<tr>
+<td><code>/wmc</code> or <code>/warmode.config</code></td>
+<td>—</td>
+<td>Opens the WarMode Admin Panel UI <em>(requires WarMode Admin Panel extension)</em>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>Plugin integration sections (ZoneManager, RaidableBases, BetterChat, SimpleStatus, etc.) are <strong>hidden by default</strong> and only appear in the config once the relevant plugin is loaded. After installing a new integration plugin, reload WarMode and the new section will be written to your config automatically.</p>
+<hr />
+<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Initial Player Mode</code></td>
+<td><code>pvp</code></td>
+<td>Mode assigned to brand-new players on their first spawn.</td>
+</tr>
+<tr>
+<td><code>Npc Mode</code></td>
+<td><code>npc</code></td>
+<td>Mode assigned to NPC players spawned by other plugins. Vanilla scientists are not affected.</td>
+</tr>
+<tr>
+<td><code>Allow Vehicle Mode Ownership</code></td>
+<td><code>false</code></td>
+<td>When enabled, vehicles and horses owned by a player (via VehicleLicense or similar) are treated as <code>claimedvehicles</code> / <code>claimedhorses</code> rather than generic <code>vehicles</code> / <code>horses</code>, giving them separate rule entries.</td>
+</tr>
+<tr>
+<td><code>Always Allow Twig Damage</code></td>
+<td><code>true</code></td>
+<td>When true, twig building blocks can always be damaged regardless of mode rules.</td>
+</tr>
+<tr>
+<td><code>Always Allow Twig Placement</code></td>
+<td><code>false</code></td>
+<td>When true, twig placement is allowed inside any base regardless of mode rules. When false, players cannot place twig blocks in bases they could not otherwise attack.</td>
+</tr>
+<tr>
+<td><code>Can Kill Trespassing Sleepers</code></td>
+<td><code>false</code></td>
+<td>When true, players who log out inside another player's base can be killed regardless of their mode.</td>
+</tr>
+<tr>
+<td><code>Show Debug Messages In Console</code></td>
+<td><code>false</code></td>
+<td>Prints rule decision messages to the server console. Extremely spammy — only enable when debugging.</td>
+</tr>
+<tr>
+<td><code>Allow Plugin Override</code></td>
+<td><code>true</code></td>
+<td>When true, other plugins (Sputnik, Convoy, etc.) can override WarMode rules inside their own zones. When false, WarMode retains its own rules even inside third-party zones.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="flagging">Flagging<a class="headerlink" href="#flagging" title="Permanent link">&para;</a></h3>
+<p>Controls the <code>/flag</code> command players use to switch their own mode.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Chat Command</code></td>
+<td><code>flag</code></td>
+<td>The chat command players type to change their mode.</td>
+</tr>
+<tr>
+<td><code>Mode Options</code></td>
+<td><code>["pve", "pvp"]</code></td>
+<td>Which modes are available for players to cycle through with the flag command.</td>
+</tr>
+<tr>
+<td><code>Requires Safe Zone</code></td>
+<td><code>true</code></td>
+<td>Players must be inside a safe zone to use the flag command. If team sync is on, all active team members must be in a safe zone.</td>
+</tr>
+<tr>
+<td><code>Requires No Hostile</code></td>
+<td><code>true</code></td>
+<td>Players must not be marked as hostile. If team sync is on, all active team members must be non-hostile.</td>
+</tr>
+<tr>
+<td><code>Requires Team Leader</code></td>
+<td><code>false</code></td>
+<td>Only the team leader can use the flag command. Solo players are not affected.</td>
+</tr>
+<tr>
+<td><code>Cooldown Seconds</code></td>
+<td><code>60</code></td>
+<td>Seconds before the flag command can be used again. Set to <code>0</code> to disable the cooldown.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="teams">Teams<a class="headerlink" href="#teams" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Sync Mode With Team Members</code></td>
+<td><code>true</code></td>
+<td>When a player's mode changes, all active team members are synced to the mode with the lowest priority among the team.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="notifications">Notifications<a class="headerlink" href="#notifications" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Chat</code></td>
+<td><code>true</code></td>
+<td>Send mode change notifications via chat.</td>
+</tr>
+<tr>
+<td><code>Toastify</code></td>
+<td><code>false</code></td>
+<td>Send mode change notifications via Toastify <em>(requires Toastify plugin)</em>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="chat">Chat<a class="headerlink" href="#chat" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Show Plugin Prefix</code></td>
+<td><code>true</code></td>
+<td>Prepends <code>[WarMode]</code> to plugin chat messages.</td>
+</tr>
+<tr>
+<td><code>Plugin Prefix Color</code></td>
+<td><code>#aaee32</code></td>
+<td>Hex color for the <code>[WarMode]</code> prefix.</td>
+</tr>
+<tr>
+<td><code>Steam Id For Icon</code></td>
+<td><code>0</code></td>
+<td>Steam ID whose avatar is used as the chat icon for WarMode messages.</td>
+</tr>
+<tr>
+<td><code>Sfx Fail</code></td>
+<td><em>(keypad denied)</em></td>
+<td>Sound effect played for negative notifications.</td>
+</tr>
+<tr>
+<td><code>Sfx Success</code></td>
+<td><em>(keypad updated)</em></td>
+<td>Sound effect played for positive notifications.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="marker">Marker<a class="headerlink" href="#marker" title="Permanent link">&para;</a></h3>
+<p>The crosshair marker that appears when a player aims their weapon at another player who has <code>Show Marker When Aimed At</code> enabled for their mode.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Show</code></td>
+<td><code>true</code></td>
+<td>Master toggle for all mode markers.</td>
+</tr>
+<tr>
+<td><code>Distance</code></td>
+<td><code>100</code></td>
+<td>Maximum distance (meters) at which the marker is visible.</td>
+</tr>
+<tr>
+<td><code>Update Interval</code></td>
+<td><code>0.5</code></td>
+<td>How often (seconds) the marker refreshes. Lower values are more responsive but may impact performance.</td>
+</tr>
+<tr>
+<td><code>Image</code></td>
+<td><code>assets/icons/peace.png</code></td>
+<td>Sprite asset path for the marker icon.</td>
+</tr>
+<tr>
+<td><code>Size</code></td>
+<td><code>16</code></td>
+<td>Marker icon size in pixels.</td>
+</tr>
+<tr>
+<td><code>Color</code></td>
+<td><code>0 0 1 0 0.5</code></td>
+<td>RGBA color of the marker.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="modes">Modes<a class="headerlink" href="#modes" title="Permanent link">&para;</a></h3>
+<p>An array of mode objects. The three default modes are <code>pvp</code>, <code>pve</code>, and <code>npc</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Name</code></td>
+<td><em>(required)</em></td>
+<td>Unique internal identifier for the mode (lowercase, no spaces). Used in all config rule arrays, commands, and API calls.</td>
+</tr>
+<tr>
+<td><code>Display Name</code></td>
+<td><em>(mode name uppercased)</em></td>
+<td>Name shown to players in chat messages. If blank, falls back to the localization key <code>mode &lt;name&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>Color Hex</code></td>
+<td><em>(varies)</em></td>
+<td>Hex color used when the mode name is referenced in chat messages from WarMode itself.</td>
+</tr>
+<tr>
+<td><code>Group</code></td>
+<td><code>null</code></td>
+<td>Oxide permission group that places players into this mode. Required for player-usable modes; leave <code>null</code> for NPC-only modes.</td>
+</tr>
+<tr>
+<td><code>Priority</code></td>
+<td><code>null</code></td>
+<td>Lower number = higher precedence. When a player is in multiple mode groups (or team sync is active), the mode with the lowest priority wins. Required when <code>Group</code> is set.</td>
+</tr>
+<tr>
+<td><code>Show Marker When Aimed At</code></td>
+<td><code>true</code></td>
+<td>Whether the crosshair marker is shown when another player aims at someone in this mode.</td>
+</tr>
+<tr>
+<td><code>Always Allow Fire Damage</code></td>
+<td><code>false</code></td>
+<td>If true, fire/incendiary damage always applies to this player and their property, regardless of what mode caused it.</td>
+</tr>
+<tr>
+<td><code>Can Take Patrol Heli Damage</code></td>
+<td><code>true</code></td>
+<td>If false, patrol helicopters cannot damage players or bases of this mode.</td>
+</tr>
+<tr>
+<td><code>Deep Sea Mode</code></td>
+<td><code>""</code></td>
+<td>Mode players automatically switch to when entering the deep sea. Leave blank to keep their current mode.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="rule-arrays">Rule arrays<a class="headerlink" href="#rule-arrays" title="Permanent link">&para;</a></h4>
+<p>Each mode has five rule dictionaries — <strong>Can Attack Types</strong>, <strong>Can Loot Types</strong>, <strong>Can Target Types</strong>, <strong>Can Mount Types</strong>, and <strong>Can Enter Types</strong>. Each dictionary maps an entity category to an array of mode names that this mode is allowed to interact with.</p>
+<p><strong>Example:</strong> <code>"Can Attack Types": { "players": ["pvp", "npc"] }</code> means a player in this mode can attack players who are in <code>pvp</code> or <code>npc</code> mode.</p>
+<p><strong>Attacking</strong> entity categories:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Entities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>players</code></td>
+<td>Other players</td>
+</tr>
+<tr>
+<td><code>buildings</code></td>
+<td>Building blocks, doors, deployables, IO entities</td>
+</tr>
+<tr>
+<td><code>traps</code></td>
+<td>Bear traps, barricades, gun traps</td>
+</tr>
+<tr>
+<td><code>containers</code></td>
+<td>Storage boxes and similar containers</td>
+</tr>
+<tr>
+<td><code>turrets</code></td>
+<td>Auto turrets, flame turrets</td>
+</tr>
+<tr>
+<td><code>samsites</code></td>
+<td>SAM sites</td>
+</tr>
+<tr>
+<td><code>horses</code></td>
+<td>Unclaimed ridable horses</td>
+</tr>
+<tr>
+<td><code>vehicles</code></td>
+<td>Unclaimed vehicles (cars, helicopters, etc.)</td>
+</tr>
+<tr>
+<td><code>tugboats</code></td>
+<td>Tugboats and anything attached to them</td>
+</tr>
+<tr>
+<td><code>legacyshelters</code></td>
+<td>Legacy shelter entities</td>
+</tr>
+<tr>
+<td><code>claimedvehicles</code></td>
+<td>Player-owned vehicles <em>(requires Allow Vehicle Mode Ownership)</em></td>
+</tr>
+<tr>
+<td><code>claimedhorses</code></td>
+<td>Player-owned horses <em>(requires Allow Vehicle Mode Ownership)</em></td>
+</tr>
+<tr>
+<td><code>stashes</code></td>
+<td>Hidden stashes</td>
+</tr>
+<tr>
+<td><code>sleepingbags</code></td>
+<td>Sleeping bags and beds</td>
+</tr>
+<tr>
+<td><code>miningquarries</code></td>
+<td>Mining quarries and pump jacks</td>
+</tr>
+<tr>
+<td><code>modularboats</code></td>
+<td>Player-built modular boats</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Looting</strong> entity categories: same as Attacking plus <code>growables</code>, <code>droppedbackpacks</code>, <code>publiccontainers</code>, <code>droppeditems</code>.</p>
+<p><strong>Targeting</strong> entity categories (traps, turrets, samsites auto-targeting): <code>traps</code>, <code>turrets</code>, <code>samsites</code>.</p>
+<p><strong>Mounting</strong> entity categories: <code>vehicles</code>, <code>horses</code>, <code>tugboats</code>, <code>claimedvehicles</code>, <code>claimedhorses</code>, <code>modularboats</code>.</p>
+<p><strong>Entering</strong> entity categories: <code>claimedmonuments</code>.</p>
+<hr />
+<h3 id="zonemanager-appears-when-zonemanager-is-installed">ZoneManager <em>(appears when ZoneManager is installed)</em><a class="headerlink" href="#zonemanager-appears-when-zonemanager-is-installed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Force Mode In Zone</code></td>
+<td><em>(example entries)</em></td>
+<td>Dictionary mapping zone selectors to mode names. Key format: <code>&lt;property&gt;&lt;operator&gt;&lt;value&gt;</code> where <code>property</code> is <code>id</code> or <code>name</code>, <code>operator</code> is <code>=</code> (exact) or <code>~</code> (partial). Example: <code>"id=abc123"</code> → <code>"pvp"</code> or <code>"name~arena"</code> → <code>"pvp"</code>.</td>
+</tr>
+<tr>
+<td><code>Zone Exit Delay</code></td>
+<td><code>3</code></td>
+<td>Seconds to wait after a player leaves a forced zone before reverting their mode. Prevents rapid flickering near zone borders. Re-entering the zone during the delay cancels the revert. Set to <code>0</code> for immediate revert.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="raidable-bases-appears-when-raidable-bases-is-installed">Raidable Bases <em>(appears when Raidable Bases is installed)</em><a class="headerlink" href="#raidable-bases-appears-when-raidable-bases-is-installed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Protection Radius</code></td>
+<td><code>50</code></td>
+<td>Must match the Protection Radius set in the Raidable Bases config.</td>
+</tr>
+<tr>
+<td><code>Can Enter Pvp Raidable Bases</code></td>
+<td><code>["pvp"]</code></td>
+<td>Modes allowed to enter PVP raidable bases. Players in other modes are ejected.</td>
+</tr>
+<tr>
+<td><code>Can Enter Pve Raidable Bases</code></td>
+<td><code>["pve", "pvp"]</code></td>
+<td>Modes allowed to enter PVE raidable bases.</td>
+</tr>
+<tr>
+<td><code>Forced Mode Pvp Zone</code> → <code>Forced Mode</code></td>
+<td><code>""</code></td>
+<td>Mode players appear to be in while inside a PVP raidable base. Leave blank to not force a mode.</td>
+</tr>
+<tr>
+<td><code>Forced Mode Pve Zone</code> → <code>Forced Mode</code></td>
+<td><code>""</code></td>
+<td>Mode players appear to be in while inside a PVE raidable base. Leave blank to not force a mode.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="betterchat-appears-when-betterchat-is-installed">BetterChat <em>(appears when BetterChat is installed)</em><a class="headerlink" href="#betterchat-appears-when-betterchat-is-installed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Show Mode Prefix In Chat</code></td>
+<td><code>true</code></td>
+<td>Show the player's current mode as a title prefix in BetterChat.</td>
+</tr>
+<tr>
+<td><code>Modes</code> → <code>&lt;mode&gt;</code> → <code>Show Mode Title In Chat</code></td>
+<td><code>true</code></td>
+<td>Whether this mode's title appears in chat for players who hold it.</td>
+</tr>
+<tr>
+<td><code>Modes</code> → <code>&lt;mode&gt;</code> → <code>Mode Title Format</code></td>
+<td><code>[{0}]</code></td>
+<td>Format string for the mode title. <code>{0}</code> is replaced with the mode's display name.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="simplestatus-appears-when-simplestatus-is-installed">SimpleStatus <em>(appears when SimpleStatus is installed)</em><a class="headerlink" href="#simplestatus-appears-when-simplestatus-is-installed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mode Status Bars</code> → <code>&lt;mode&gt;</code> → <code>Show</code></td>
+<td><code>true</code></td>
+<td>Whether the status bar for this mode is displayed.</td>
+</tr>
+<tr>
+<td><code>Mode Status Bars</code> → <code>&lt;mode&gt;</code> → <code>Background Color</code></td>
+<td><em>(varies)</em></td>
+<td>RGBA background color of the status bar.</td>
+</tr>
+<tr>
+<td><code>Mode Status Bars</code> → <code>&lt;mode&gt;</code> → <code>Image</code></td>
+<td><em>(varies)</em></td>
+<td>Sprite asset path for the status bar icon. Only sprites are currently supported.</td>
+</tr>
+<tr>
+<td><code>Mode Status Bars</code> → <code>&lt;mode&gt;</code> → <code>Image Color</code></td>
+<td><em>(varies)</em></td>
+<td>RGBA tint color applied to the icon.</td>
+</tr>
+<tr>
+<td><code>Mode Status Bars</code> → <code>&lt;mode&gt;</code> → <code>Title Color</code></td>
+<td><em>(varies)</em></td>
+<td>RGBA color of the mode title text in the status bar.</td>
+</tr>
+<tr>
+<td><code>Mode Status Bars</code> → <code>&lt;mode&gt;</code> → <code>Text Color</code></td>
+<td><em>(varies)</em></td>
+<td>RGBA color of the subtitle text in the status bar.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="noescape-appears-when-noescape-is-installed">NoEscape <em>(appears when NoEscape is installed)</em><a class="headerlink" href="#noescape-appears-when-noescape-is-installed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Prevent Flagging While Combat Blocked</code></td>
+<td><code>true</code></td>
+<td>Players cannot use the flag command while combat blocked.</td>
+</tr>
+<tr>
+<td><code>Prevent Flagging While Raid Blocked</code></td>
+<td><code>true</code></td>
+<td>Players cannot use the flag command while raid blocked.</td>
+</tr>
+<tr>
+<td><code>Prevent Flagging While Escape Blocked</code></td>
+<td><code>true</code></td>
+<td>Players cannot use the flag command while escape blocked.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="toastify-appears-when-toastify-is-installed">Toastify <em>(appears when Toastify is installed)</em><a class="headerlink" href="#toastify-appears-when-toastify-is-installed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Positive Toast ID</code></td>
+<td><code>success</code></td>
+<td>Toast type ID for positive mode notifications. Must match a toast defined in your Toastify config.</td>
+</tr>
+<tr>
+<td><code>Negative Toast ID</code></td>
+<td><code>error</code></td>
+<td>Toast type ID for negative/blocked notifications.</td>
+</tr>
+<tr>
+<td><code>Duration</code></td>
+<td><code>4</code></td>
+<td>How long (seconds) toasts remain visible.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="event-plugin-forced-modes-each-section-appears-when-the-respective-plugin-is-installed">Event plugin forced modes <em>(each section appears when the respective plugin is installed)</em><a class="headerlink" href="#event-plugin-forced-modes-each-section-appears-when-the-respective-plugin-is-installed" title="Permanent link">&para;</a></h3>
+<p>Each supported event plugin has its own config section containing a single key:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Forced Mode</code></td>
+<td><code>pvp</code></td>
+<td>Mode players appear to be in while inside that plugin's event zone. Leave blank (<code>""</code>) to not force a mode.</td>
+</tr>
+</tbody>
+</table>
+<p>Supported plugins:</p>
+<table>
+<thead>
+<tr>
+<th>Config section</th>
+<th>Plugin</th>
+<th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Sputnik</code></td>
+<td>Sputnik</td>
+<td>Adem</td>
+</tr>
+<tr>
+<td><code>Convoy Reforged</code></td>
+<td>Convoy Reforged</td>
+<td>Adem</td>
+</tr>
+<tr>
+<td><code>Caravan</code></td>
+<td>Caravan</td>
+<td>Adem</td>
+</tr>
+<tr>
+<td><code>Shipwreck</code></td>
+<td>Shipwreck</td>
+<td>Adem</td>
+</tr>
+<tr>
+<td><code>Ziggurat Event</code></td>
+<td>Ziggurat Event</td>
+<td>Simil3x</td>
+</tr>
+<tr>
+<td><code>Lighthouse Event</code></td>
+<td>Lighthouse Event</td>
+<td>Simil3x</td>
+</tr>
+<tr>
+<td><code>Operation Fortress</code></td>
+<td>Operation Fortress</td>
+<td>Mevent</td>
+</tr>
+<tr>
+<td><code>Dangerous Treasures</code></td>
+<td>Dangerous Treasures</td>
+<td>nivex</td>
+</tr>
+<tr>
+<td><code>Gas Station Event</code></td>
+<td>Gas Station Event</td>
+<td>KpucTaJl</td>
+</tr>
+<tr>
+<td><code>Triangulation</code></td>
+<td>Triangulation</td>
+<td>KpucTaJl</td>
+</tr>
+<tr>
+<td><code>Supermarket Event</code></td>
+<td>Supermarket Event</td>
+<td>KpucTaJl</td>
+</tr>
+<tr>
+<td><code>Water Event</code></td>
+<td>Water Event</td>
+<td>KpucTaJl</td>
+</tr>
+<tr>
+<td><code>Arctic Base Event</code></td>
+<td>Arctic Base Event</td>
+<td>KpucTaJl</td>
+</tr>
+<tr>
+<td><code>Air Event</code></td>
+<td>Air Event</td>
+<td>KpucTaJl</td>
+</tr>
+<tr>
+<td><code>Ferry Terminal Event</code></td>
+<td>Ferry Terminal Event</td>
+<td>KpucTaJl</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="developer-api">Developer API<a class="headerlink" href="#developer-api" title="Permanent link">&para;</a></h2>
+<h3 id="hooks-callable-by-other-plugins">Hooks (callable by other plugins)<a class="headerlink" href="#hooks-callable-by-other-plugins" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Called whenever a player's effective mode changes, or when config is reloaded.</span>
+<span class="c1">// userid: the player's Steam ID string</span>
+<span class="c1">// modeId: the mode's internal Name (e.g. "pvp", "pve")</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">WarMode_PlayerModeUpdated</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">userid</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">modeId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Return false to prevent a player from using the /flag command.</span>
+<span class="c1">// Return null or true to allow it.</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="nf">WarMode_CanUseFlagCommand</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">userid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Called when the flag command is about to execute.</span>
+<span class="c1">// Return a non-null value to cancel WarMode's default mode-switching logic</span>
+<span class="c1">// (e.g. if your plugin is handling it).</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="nf">WarMode_OnFlagCommand</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">userid</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">requestedMode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="methods-callable-on-the-warmode-plugin-reference">Methods (callable on the WarMode plugin reference)<a class="headerlink" href="#methods-callable-on-the-warmode-plugin-reference" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Returns the internal mode name of an entity, taking forced zones into account.</span>
+<span class="kt">string</span><span class="w"> </span><span class="nf">GetEntityMode</span><span class="p">(</span><span class="n">BaseEntity</span><span class="w"> </span><span class="n">entity</span><span class="p">);</span>
+
+<span class="c1">// Returns the Oxide group name for a given mode id (e.g. "pve" → "warmodepve").</span>
+<span class="kt">string</span><span class="w"> </span><span class="nf">GetModeGroup</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">modeId</span><span class="p">);</span>
+
+<span class="c1">// Returns the target-type category name for an entity (e.g. "players", "buildings").</span>
+<span class="kt">string</span><span class="w"> </span><span class="nf">GetEntityTargetType</span><span class="p">(</span><span class="n">BaseEntity</span><span class="w"> </span><span class="n">entity</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="extension-plugins">Extension plugins<a class="headerlink" href="#extension-plugins" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WarMode Admin Panel</strong></td>
+<td>In-game UI for editing modes, rules, settings, zones, players, and event plugin forced modes. Opens with <code>/wmc</code>.</td>
+</tr>
+<tr>
+<td><strong>WarMode Badges</strong></td>
+<td>Displays a configurable HUD badge showing each player's current mode.</td>
+</tr>
+<tr>
+<td><strong>WarMode Rules UI</strong></td>
+<td>In-game rules board that shows players what the PVP/PVE rules are on the server.</td>
+</tr>
+<tr>
+<td><strong>WarMode Spawn UI</strong></td>
+<td>Selection screen shown to new players so they can choose their starting mode.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
