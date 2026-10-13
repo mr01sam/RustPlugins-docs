@@ -3,5 +3,18 @@
 }
 
 .md-content {
-  max-width: 900px;
+  max-width: 1100px;
+}
+
+.md-typeset table:not([class]) {
+  width: 100%;
+}
+
+.md-typeset table:not([class]) td:nth-child(2) {
+  min-width: 320px;
+}
+
+.md-typeset table:not([class]) td code {
+  word-break: break-word;
+  white-space: normal;
 }
